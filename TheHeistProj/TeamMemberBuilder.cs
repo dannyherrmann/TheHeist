@@ -67,13 +67,20 @@ public class TeamMemberBuilder
                 courageAsDec = Convert.ToDecimal(courageFactorInput);
             }
 
-            TeamMember test = new TeamMember (name, skillLevelAsInt, courageAsDec);
+            Console.Write("\n");
 
-            TeamMemberList.Add (test);
+            TeamMember newTeamMember = new TeamMember (name, skillLevelAsInt, courageAsDec);
+
+            TeamMemberList.Add (newTeamMember);
 
         }
 
-        Console.Write($"Here is the count of team members: {TeamMemberList.Count}");
+        Console.Write($"Here is the count of team members: {TeamMemberList.Count}\n");
+
+        foreach (var teamMember in TeamMemberList)
+        {
+            Console.WriteLine("Team Member: Name: {0}, Skill Level: {1}, Courage Factor: {2}",teamMember.Name,teamMember.SkillLevel,teamMember.CourageFactor);
+        }
     }
 
 }
