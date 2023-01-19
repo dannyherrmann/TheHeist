@@ -86,7 +86,6 @@ public class TeamMemberBuilder
 
         foreach (var teamMember in TeamMemberList)
         {
-            // Console.WriteLine("Team Member: Name: {0}, Skill Level: {1}, Courage Factor: {2}",teamMember.Name,teamMember.SkillLevel,teamMember.CourageFactor);
             Console.WriteLine(teamMember);
         }
 
