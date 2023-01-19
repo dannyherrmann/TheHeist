@@ -1,14 +1,18 @@
 ﻿using TheHeistProj;
 
-//### Phase Two
+// ### Phase Three
+//
+// The program should be updated to...
+//
+// 1. Stop displaying each team member's information.
 
-//The program should be updated to...
+// 2. Store a value for the *bank's difficulty level*. Set this value to 100.
 
-//1. Create a way to store several team members.
-//2. Collect several team members' information.
-//3. Stop collecting team members when a blank name is entered.
-//4. Display a message containing the number of members of the team.
-//5. Display each team member's information.
+// 3. Sum the skill levels of the team. Save that number.
 
+// 4. Compare the number with the bank's difficulty level. If the team's
+//     skill level is greater than or equal to the bank's difficulty level,
+//     Display a success message, otherwise display a failure message.
+    
 TeamMemberBuilder builder = new TeamMemberBuilder();
 builder.Run();

@@ -14,11 +14,22 @@ public class TeamMemberBuilder
 
         Console.Write("Enter # of team members: ");
 
-        int teamMemberCountInput = Convert.ToInt32(Console.ReadLine());
+        string numTeamMembersInput = Console.ReadLine();
+
+        int numTeamMembers;
+
+        while (!int.TryParse(numTeamMembersInput, out numTeamMembers) || numTeamMembers < 1)
+        {
+            Console.Write("Please enter at least 1 team member!!\n");
+            Console.Write("Enter # of team members: ");
+            numTeamMembersInput = Console.ReadLine();
+        }
+
+        numTeamMembers = Convert.ToInt32(numTeamMembersInput);
 
         List<TeamMember> TeamMemberList = new List<TeamMember>();
 
-        for (int i = 1; i <= teamMemberCountInput; i++)
+        for (int i = 1; i <= numTeamMembers; i++)
         {
             Console.WriteLine($"\nTeam Member #{i}:");
 
@@ -39,34 +50,30 @@ public class TeamMemberBuilder
 
             int skillLevelAsInt;
 
-            if (!int.TryParse(skillLevelInput, out skillLevelAsInt) || skillLevelAsInt <= 0)
+            while (!int.TryParse(skillLevelInput, out skillLevelAsInt) || skillLevelAsInt <= 0)
             {
                 Console.Write("\tSkill must be a positive integer!!\n");
                 Console.Write("\tSkill Level --> ");
                 skillLevelInput = Console.ReadLine();
-            } 
-            else
-            {
-                skillLevelAsInt = Convert.ToInt32(skillLevelInput);
             }
-
+            
+            skillLevelAsInt = Convert.ToInt32(skillLevelInput);
+            
             Console.Write("\tCourage Factor --> ");
 
             string courageFactorInput = Console.ReadLine();
 
             decimal courageAsDec;
 
-            if (!decimal.TryParse(courageFactorInput, out courageAsDec) || courageAsDec < 0M || courageAsDec > 2M)
+            while (!decimal.TryParse(courageFactorInput, out courageAsDec) || courageAsDec < 0.0M || courageAsDec > 2.0M)
             {
                 Console.Write("\tPlease enter a decimal between 0.0 and 2.0!!\n");
                 Console.Write("\tCourage Factor --> ");
                 courageFactorInput = Console.ReadLine();
             }
-            else
-            {
-                courageAsDec = Convert.ToDecimal(courageFactorInput);
-            }
-
+            
+            courageAsDec = Convert.ToDecimal(courageFactorInput);
+            
             Console.Write("\n");
 
             TeamMember newTeamMember = new TeamMember (name, skillLevelAsInt, courageAsDec);
@@ -75,12 +82,15 @@ public class TeamMemberBuilder
 
         }
 
-        Console.Write($"Here is the count of team members: {TeamMemberList.Count}\n");
+        Console.Write($"There will be {TeamMemberList.Count} team members part of this heist!\n");
 
         foreach (var teamMember in TeamMemberList)
         {
-            Console.WriteLine("Team Member: Name: {0}, Skill Level: {1}, Courage Factor: {2}",teamMember.Name,teamMember.SkillLevel,teamMember.CourageFactor);
+            // Console.WriteLine("Team Member: Name: {0}, Skill Level: {1}, Courage Factor: {2}",teamMember.Name,teamMember.SkillLevel,teamMember.CourageFactor);
+            Console.WriteLine(teamMember);
         }
+
+        Console.ReadLine();
     }
 
 }
