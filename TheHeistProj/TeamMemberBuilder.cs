@@ -90,35 +90,37 @@ public class TeamMemberBuilder
 
         }
 
-        Console.Clear();
+        //Console.Clear();
 
-        Console.Write($"There will be {TeamMemberList.Count} team members part of this heist!\n");
+        Console.Write($"There will be {TeamMemberList.Count} team members part of this heist! Press any key to continue\n");
 
         foreach (var teamMember in TeamMemberList)
         {
             Console.WriteLine(teamMember);
         }
 
+        Console.ReadKey();
         Console.Clear();
-
         int teamSkillLevel = teamSkillLevels.Sum();
 
         Console.Write($"Bank's level = {bankLevel}\n");
         Console.WriteLine($"Team skill leavel = {teamSkillLevel}\n");
 
-        Console.Write("Click return to see the results of this Heist!!");
-        Console.ReadLine();
+        Console.Write("Click any key to see the results of this Heist!!");
+        Console.ReadKey();
         Console.Clear();
 
         if (teamSkillLevel >= bankLevel)
         {
-            Console.WriteLine("This heist was a SUCCESS!\n");
+            int diff = teamSkillLevel - bankLevel;
+            Console.WriteLine($"This heist was a SUCCESS! You beat the bank by {diff} points\n");
         } else
         {
-            Console.WriteLine("This heist was a FAILURE :(");
+            int diff = bankLevel- teamSkillLevel;
+            Console.WriteLine($"This heist was a FAILURE :( The bank beat you by {diff} points");
         }
 
-        Console.ReadLine();
+        Console.ReadKey();
     }
 
 }
