@@ -104,7 +104,7 @@ public class TeamMemberBuilder
         int teamSkillLevel = teamSkillLevels.Sum();
 
         Console.Write($"Bank's level = {bankLevel}\n");
-        Console.WriteLine($"Team skill leavel = {teamSkillLevel}\n");
+        Console.WriteLine($"Team skill level = {teamSkillLevel}\n");
 
         Console.Write("Click any key to see the results of this Heist!!");
         Console.ReadKey();
