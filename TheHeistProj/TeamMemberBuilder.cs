@@ -90,8 +90,6 @@ public class TeamMemberBuilder
 
         }
 
-        //Console.Clear();
-
         Console.Write($"There will be {TeamMemberList.Count} team members part of this heist! Press any key to continue\n");
 
         foreach (var teamMember in TeamMemberList)
