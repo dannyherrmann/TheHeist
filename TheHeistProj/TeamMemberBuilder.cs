@@ -10,6 +10,12 @@ public class TeamMemberBuilder
 {
     public void Run()
     {
+        Random rnd = new Random();
+        int bankLevel = 100 + rnd.Next(-10, 10);
+        List<TeamMember> TeamMemberList = new List<TeamMember>();
+        var teamSkillLevels = new List<int>();
+
+
         Console.WriteLine("Let's plan your heist!\n");
 
         Console.Write("Enter # of team members: ");
@@ -27,7 +33,7 @@ public class TeamMemberBuilder
 
         numTeamMembers = Convert.ToInt32(numTeamMembersInput);
 
-        List<TeamMember> TeamMemberList = new List<TeamMember>();
+        Console.Clear();
 
         for (int i = 1; i <= numTeamMembers; i++)
         {
@@ -37,11 +43,9 @@ public class TeamMemberBuilder
 
             string name = Console.ReadLine();
 
-            while (string.IsNullOrWhiteSpace(name))
+            if (string.IsNullOrWhiteSpace(name)) 
             {
-                Console.Write("\tCome on...enter a name!!\n");
-                Console.Write("\tName --> ");
-                name = Console.ReadLine();
+                break;
             }
 
             Console.Write("\tSkill Level --> ");
@@ -80,13 +84,38 @@ public class TeamMemberBuilder
 
             TeamMemberList.Add (newTeamMember);
 
+            teamSkillLevels.Add(newTeamMember.SkillLevel);
+
+            Console.Clear();
+
         }
+
+        Console.Clear();
 
         Console.Write($"There will be {TeamMemberList.Count} team members part of this heist!\n");
 
         foreach (var teamMember in TeamMemberList)
         {
             Console.WriteLine(teamMember);
+        }
+
+        Console.Clear();
+
+        int teamSkillLevel = teamSkillLevels.Sum();
+
+        Console.Write($"Bank's level = {bankLevel}\n");
+        Console.WriteLine($"Team skill leavel = {teamSkillLevel}\n");
+
+        Console.Write("Click return to see the results of this Heist!!");
+        Console.ReadLine();
+        Console.Clear();
+
+        if (teamSkillLevel >= bankLevel)
+        {
+            Console.WriteLine("This heist was a SUCCESS!\n");
+        } else
+        {
+            Console.WriteLine("This heist was a FAILURE :(");
         }
 
         Console.ReadLine();
