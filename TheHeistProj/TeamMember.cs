@@ -13,9 +13,9 @@ public class TeamMember
     public decimal CourageFactor { get; set; }
     public TeamMember(string name, int skillLevel, decimal courageFactor)
     {
-        this.Name = name;
-        this.SkillLevel = skillLevel;
-        this.CourageFactor = courageFactor;
+        Name = name;
+        SkillLevel = skillLevel;
+        CourageFactor = courageFactor;
     }
     public override string ToString()
     {
