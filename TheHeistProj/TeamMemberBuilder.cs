@@ -8,8 +8,10 @@ namespace TheHeistProj;
 
 public class TeamMemberBuilder
 {
-    public void Run()
+    public TeamMember Run()
     {
+        TeamMember teamMember = new TeamMember();
+
         List<TeamMember> TeamMemberList = new List<TeamMember>();
         
         var teamSkillLevels = new List<int>();
@@ -17,23 +19,6 @@ public class TeamMemberBuilder
         var success = new List<int>();
 
         var failure = new List<int>();
-
-        Console.WriteLine("Let's plan your heist!\n");
-
-        Console.Write("Enter # of team members: ");
-
-        string numTeamMembersInput = Console.ReadLine();
-
-        int numTeamMembers;
-
-        while (!int.TryParse(numTeamMembersInput, out numTeamMembers) || numTeamMembers < 1)
-        {
-            Console.Write("Please enter at least 1 team member!!\n");
-            Console.Write("Enter # of team members: ");
-            numTeamMembersInput = Console.ReadLine();
-        }
-
-        numTeamMembers = Convert.ToInt32(numTeamMembersInput);
 
         Console.Write("Enter # of trial runs: ");
 
@@ -180,5 +165,6 @@ public class TeamMemberBuilder
         int failureCount = failure.Sum();
         Console.Write($"Success Count: {successCount}\n");
         Console.Write($"Failure Count: {failureCount}");
+        return TeamMember;
     }
 }

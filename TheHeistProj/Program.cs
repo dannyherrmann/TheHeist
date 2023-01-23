@@ -1,4 +1,5 @@
 ﻿using TheHeistProj; 
 
-TeamMemberBuilder builder = new TeamMemberBuilder();
-builder.Run();
+Team team = new Team();
+team.Build();
+team.DisplayTeamInfo();
