@@ -8,46 +8,39 @@ namespace TheHeistProj;
 
 public class Team
 {
-    private TeamMemberBuilder _memberBuilder;
+    public Team()
+    {
+        _memberBuilder = new TeamMemberBuilderV2();
+        _members = new List<TeamMember>();
+        _skillLevels = new List<int>();
+    }
+
+    private TeamMemberBuilderV2 _memberBuilder;
 
     private List<TeamMember> _members;
+
+    private List<int> _skillLevels;
 
     public void Build()
     {
         Console.WriteLine("Let's plan your heist!\n");
 
-        Console.Write("Enter # of team members: ");
-
-        string numTeamMembersInput = Console.ReadLine();
-
-        int numTeamMembers;
-
-        while (!int.TryParse(numTeamMembersInput, out numTeamMembers) || numTeamMembers < 1)
-        {
-            Console.Write("Please enter at least 1 team member!!\n");
-            Console.Write("Enter # of team members: ");
-            numTeamMembersInput = Console.ReadLine();
-        }
-
-        numTeamMembers = Convert.ToInt32(numTeamMembersInput);
-
         bool building = true;
-        int i = 1;
 
         do
         {
-            i += 1;
             TeamMember newMember = _memberBuilder.Run();
            
-            if (string.IsNullOrWhiteSpace(newMember.Name) || i <= numTeamMembers)
+            if (string.IsNullOrWhiteSpace(newMember.Name))
             {
                 building = false;
             }
             else
             {
-                Console.WriteLine($"Adding {newMember.name} to the team!");
+                Console.WriteLine($"Adding {newMember.Name} to the team!");
                 Console.WriteLine();
                 _members.Add(newMember);
+                _skillLevels.Add(newMember.SkillLevel);
             }
         } while (building);
     }
@@ -59,5 +52,24 @@ public class Team
         _members.ForEach(member => Console.WriteLine(member));
 
         Console.ReadKey();
+    }
+
+    public void TrialRuns()
+    {
+        Console.WriteLine("Enter # of trial runs: ");
+
+        string trialRunInput = Console.ReadLine();
+
+        int trialRuns;
+
+        while (!int.TryParse(trialRunInput, out trialRuns) || trialRuns < 1)
+        {
+            Console.Write("Can you please enter at least 1 run??\n");
+            Console.Write("Enter # of trial runs: ");
+            trialRunInput = Console.ReadLine();
+        }
+
+        trialRuns = Convert.ToInt32(trialRunInput);
+
     }
 }
